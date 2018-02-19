@@ -1,12 +1,15 @@
-const state = {
-  abc: 1,
+const initialState = {
+  count: 1,
 };
 
-const counter = (initialState = state, action) => {
-  if (action.type === 'SettingABC') {
-    return { abc: initialState.abc + 1 };
+const counter = (state = initialState, action) => {
+  if (action.type === 'INCREMENT') {
+    return { ...initialState, count: state.count + 1 };
   }
-  return initialState;
+  if (action.type === 'DECREMENT') {
+    return { ...initialState, count: state.count - 1 };
+  }
+  return state;
 };
 
 export default counter;
